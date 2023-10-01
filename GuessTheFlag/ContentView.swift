@@ -35,8 +35,7 @@ struct ContentView: View {
                 Spacer()
                 
                 Text("Guess the Flag")
-                    .font(.largeTitle.bold())
-                    .foregroundColor(.white)
+                    .prominentTitleStyle()
                 
                 VStack(spacing: 15) {
 
@@ -114,6 +113,7 @@ struct ContentView: View {
     
 }
 
+/// custom image for flag image
 struct FlagImage: View {
     var imageName: String
     
@@ -122,6 +122,23 @@ struct FlagImage: View {
             .renderingMode(.original)
             .clipShape(Capsule())
             .shadow(radius: 5)
+    }
+}
+
+/// custom text fot title label
+struct ProminentTitle: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle.bold())
+            .foregroundColor(.yellow)
+    }
+    
+}
+
+extension View {
+    func prominentTitleStyle() -> some View {
+        modifier(ProminentTitle())
     }
 }
 
